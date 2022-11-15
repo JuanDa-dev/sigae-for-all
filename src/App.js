@@ -15,7 +15,7 @@ export default function App() {
             <Routes>
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="*" exact element={<PageNotFound />} />
-                <Route path="/" element={auth ? <GestionPage /> : <Navigate replace to="/login" />} />
+                <Route path="/gestionPage" element={auth ? <GestionPage /> : <Navigate replace to="/login" />} />
                 <Route path="/newEvent" element={auth ? <NewEventPage /> : <Navigate replace to="/login" />} />
                 <Route path="/form" element={auth ? <FormPage /> : <Navigate replace to="/login" />} />
             </Routes>

@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+    background: rgb(170, 170, 170);
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+
+#sidebar{
+    
+    position: fixed;
+    top: 0 ;
+    left: 0;
+    width: 280px;
+    height: 100%;
+    background: whitesmoke;
+    z-index: 2000;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+#sidebar .brand{
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 700;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    color: darkcyan;
+
+}
+
+#sidebar .brand .bx{
+    min-width: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+#sidebar .side-menu{
+    width: 100%;
+    margin-top: 48px;
+}
+
+#sidebar .side-menu li{
+    width: 100%;
+    height: 50px;
+    background:transparent;
+    margin-left: 3px;
+    border-radius: 48px 0 0 48px;
+    padding: .3rem;
+}
+
+#sidebar .side-menu li.active{
+    background: rgb(170, 170, 170);
+    position: relative;
+    
+}#sidebar .side-menu li.active a{
+    color: #3C91E6;
+    
+}
+
+
+
+#sidebar .side-menu li.active::before{
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px ;
+    top: -40px;
+    right: 0;
+    box-shadow: 20px 20px 0 rgb(170, 170, 170);
+    z-index: -1;
+}
+
+#sidebar .side-menu li.active::after{
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px ;
+    bottom: -40px;
+    right: 0;
+    box-shadow: 20px -20px 0 rgb(170, 170, 170);
+    z-index: -1;
+    
+}
+
+#sidebar .side-menu li span{
+    margin-left: .6rem;
+}
+
+#sidebar .side-menu li a{
+    width: 100%;
+    height: 100%;
+    background: whitesmoke;
+    display: flex;
+    align-items: center;
+    border-radius: 40px;
+    font-size: 18px;
+    color: black;
+}
+
+#sidebar .side-menu.top li a:hover{
+
+    color: #3C91E6;
+}
+   
+
+
+#sidebar .side-menu  li a .bx{
+    margin-left: 5px;
+    min-width: calc(60px -((4px + 6px )*2));
+    display: flex;
+    justify-content: center;
+
+}

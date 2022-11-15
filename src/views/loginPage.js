@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useState, useContext } from 'react'
 import '../css/login.css'
 
+
+
 export default function LoginPage() {
     const navigate = useNavigate()
     const { setAuth } = useContext(AuthContext)
@@ -28,7 +30,6 @@ export default function LoginPage() {
         }
     }
 
-  
     return (
         <div className="container">
             <div className="screen">
@@ -57,6 +58,6 @@ export default function LoginPage() {
                     <span className="screen__background__shape screen__background__shape1"></span>
                 </div>		
             </div>
-        </div>
+        </div>  
     )
 }
