@@ -8,7 +8,7 @@ import AuthContext from './components/authProvider';
 import { useContext } from 'react'
 
 export default function App() {
-    const { auth } = useContext(AuthContext);
+    const auth ="user"
     
     return (
         <BrowserRouter>
