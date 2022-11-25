@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useState, useContext } from 'react'
 import '../css/login.css'
 
-
-
 export default function LoginPage() {
     const navigate = useNavigate()
     const { setAuth } = useContext(AuthContext)

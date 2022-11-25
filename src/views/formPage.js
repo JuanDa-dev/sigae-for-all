@@ -4,7 +4,6 @@ import '../css/form.css'
 
 export default function FormPage() {
     const { auth } = useContext(AuthContext)
-    console.log(auth)
   
     const items = {
       "fname": ["Nombre", "text"],
