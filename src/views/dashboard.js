@@ -1,4 +1,4 @@
-export default function Dashboard() {
+export default function Dashboard({ auth }) {
     return (
         <div>Dashboard</div>
     )

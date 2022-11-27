@@ -1,20 +1,13 @@
 import { createContext, useState, useEffect } from "react";
-import { postRequest } from "./requests";
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-    const [auth, setAuth] = useState(localStorage.getItem('user'));
-
-    const getUser = async (user) => {
-        if (user) {
-            const data = await postRequest('verify/token')
-            setAuth(typeof data === 'string' ? undefined : data)
-        }
-    }
-
+    const user = localStorage.getItem('user')
+    const [auth, setAuth] = useState(typeof user === 'string' ? null : user);
+    
     useEffect(() => {
-        getUser(auth)
+        setAuth(auth)
     }, [auth])
 
     return (
