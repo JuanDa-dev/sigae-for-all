@@ -1,4 +1,4 @@
-export default function AttendeesPage() {
+export default function AttendeesPage({ auth }) {
     return (
         <div>Attendees Page</div>
     )

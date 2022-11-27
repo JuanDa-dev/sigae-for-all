@@ -18,6 +18,9 @@ body {
 	
 }
 
+.Sign_Up div a {
+	margin-left: 3px;
+}
 
 .Login_Container{
 	width: 100%;

@@ -14,8 +14,8 @@ export default function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/Register" element={<RegisterPage />} />
+                <Route path="/login" element={auth ? <Navigate replace to="/login" /> : <LoginPage />} />
+                <Route path="/Register" element={auth ? <Navigate replace to="/login" /> : <RegisterPage />} />
                 <Route path="/" element={auth ? <GestionPage /> : <Navigate replace to="/login" />} />
                 <Route path="/form" element={auth ? <FormPage /> : <Navigate replace to="/login" />} />
                 <Route path="*" exact element={<PageNotFound />} />

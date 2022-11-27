@@ -19,31 +19,26 @@ export default function LoginPage() {
                 password: password
             }
         })
+        console.log(response)
         if (typeof response === 'string') {
             console.log(response)
         } else {
             setAuth(response);
             localStorage.setItem('user', response)
-            navigate('/form');
+            navigate('/');
         }
     }
 
     return (
-        
-
         <div className='Login_Container'>
-
             <form className='Form_Login' onSubmit={sendData}>
-                
                 <div className='input_Container'>
-
                     <i className="login__icon fas fa-user"></i>
                     <input type= "text" className='inputLogin' onChange={e => {
                                 setUsername(e.target.value)
                             }} placeholder="Nombre de usuario" />
                 </div>
                 <div className='input_Container'>
-
                     <i className="login__icon fas fa-lock"></i>
                     <input type= "password" className='inputLogin' onChange={e => {
                                 setPassword(e.target.value)
@@ -54,13 +49,10 @@ export default function LoginPage() {
                         <i className="button__icon fas fa-chevron-right"></i>
                 </button>
                 <div className='Sign_Up'>
-
                     <div>
-                        No tienes un Usuario
-                        <a href='www.cursos.uninorte.edu.co'> Registrate aqui</a>
+                        No tienes un Usuario?
+                        <a href='www.cursos.uninorte.edu.co'>Registrate aqui</a>
                     </div>
-                    
-
                 </div>
             </form>
         </div>  
