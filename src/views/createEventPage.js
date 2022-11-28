@@ -21,16 +21,27 @@ export default function CreateEventPage({ auth }) {
 
     const sendData = async (e) => {
         e.preventDefault()        
-        event.user_id= auth.id
+        event.user_id = auth.id
         event.start_date = new Date(event.start_date)
         event.end_date = new Date(event.end_date)     
-        setEvent(event)
         const response = await postRequest({ 
             name: `events/create/`,
             payload: event,
             token: auth.token
         })
-        console.log(response)
+        const form = {
+            name: event.name,
+            date: event.start_date,
+            description: `El evento ${event.name} inicia el ${event.start_date} y termina el ${event.end_date}`
+        }
+        const response2 = await postRequest({
+            name: `data_events/createform/${response.id}`,
+            payload: form,
+            token: auth.token
+        })
+        event.form_id = response2.id
+        setEvent(event)
+        console.log(event)
     }
   
     return(

@@ -1,7 +1,6 @@
 export default function Dashboard({ auth }) {
-    return 
-    <div>Dashboard
-        <h1>Bienvenido.</h1>
-        <h2>Usuario: {auth.name}</h2>
+    return <div>
+        <h2>Bienvenido.</h2>
+        <h3>Usuario: {auth.name}</h3>
     </div>
 }
