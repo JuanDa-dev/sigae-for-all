@@ -4,7 +4,7 @@ const url = `${process.env.REACT_APP_URL}/api/`;
 const getConfig = (token) => {
     return {
         headers: {
-            Authorization: token,
+            Authorization: process.env.REACT_APP_SPACE + token,
         },
         withCredentials: true
     }

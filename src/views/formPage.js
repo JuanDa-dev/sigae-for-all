@@ -3,9 +3,12 @@ import { useParams } from 'react-router-dom'
 import { v4 as uuidV4 } from 'uuid';
 import { useState } from 'react';
 import '../css/form.css'
+import { QRious } from 'react-qrious'
+import Swal from 'sweetalert2'
 
 export default function FormPage() {
     const { form_id } = useParams();
+    const [QRCodeValue, setQRCodeValue] = useState("")
     const [attendee, setAttendee] = useState({
         name: "",
         lastName: "",
@@ -31,7 +34,6 @@ export default function FormPage() {
       "phone": ["Teléfono celular", "tel"],
       "extrdata": ["Información adicional", "extradata"]
     }
-    const questions = ["Teléfono", "Correo", "Cualquiera"]
 
     const sendData = async (e) => {
         e.preventDefault()
@@ -47,11 +49,26 @@ export default function FormPage() {
             name: `data_events/attendees/${event_id}`,
             payload: attendee
         })
-        console.log(response)
+        setQRCodeValue(attendee.qrcode_description)
+        document.getElementById('qrcode_button').click()
+    }
+
+    const downloadQRCode = (e) => {
+        e.preventDefault()
+        const srcImage = document.getElementById('codigo').src
+        const enlace = document.getElementById('qrcode_a')
+        enlace.href = srcImage
+        enlace.download = 'entrada a evento.png'
+        enlace.click()
     }
   
     return(
         <div className="testbox">
+            <form hidden onSubmit={downloadQRCode}>
+                <QRious id="codigo" value={QRCodeValue} />
+                <a id="qrcode_a"></a>
+                <button id="qrcode_button" type="submit"></button>
+            </form>
             <form onSubmit={sendData}>
                 <div className="banner"><h1>Inscripción al evento</h1></div>
                 <div className="colums">
@@ -69,22 +86,7 @@ export default function FormPage() {
                         )
                     })}
                 </div>
-        
-                <div className="question">
-                    <label>¿Por donde prefieres ser contactado? </label>
-                    <div className="question-answer">
-                        {questions.map((question, index) => {
-                            const name = 'radio'
-                            const element = `${name}_${index + 4}`
-                            return (
-                                <div key={index}>
-                                    <input type={name} value={question} id={name} name="contact"/>
-                                    <label htmlFor={element} className={name} ><span>{question}</span></label>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
+
                 <h2>Términos y condiciones</h2>
                 <input type="checkbox" name="checkbox1" />
                 <label>Nos asegura que los datos que nos acaba de suministrar son fieles a la realidad que corresponde, y así mismo consiente que esta información sea almacenada en una base de datos y usada para la identificación dentro del evento con fines administrativos.</label>

@@ -1,9 +1,9 @@
 import { useState, useCallback } from 'react'
 import AttendeesPage from './attendeesPage'
 import Dashboard from './dashboard'
-import DocumentationPage from './documentationPage'
 import EventsPage from './eventsPage'
 import AuthContext  from '../components/authProvider'
+import CreateEventPage from './createEventPage'
 import { useContext } from 'react'
 import '../css/gestion.css'
 import { useNavigate } from 'react-router-dom'
@@ -12,17 +12,17 @@ export default function GestionPage() {
     const navigate = useNavigate()
     const { auth, setAuth } = useContext(AuthContext)
     const pages = {
-        Dashboard: <Dashboard auth={auth} />,
-        Eventos: <EventsPage auth={auth} />,
-        Asistentes: <AttendeesPage auth={auth} />,
-        Documentacion: <DocumentationPage auth={auth} />
+        'Dashboard': <Dashboard auth={auth} />,
+        'Eventos': <EventsPage auth={auth} />,
+        'Asistentes': <AttendeesPage auth={auth} />,
+        'crear evento': <CreateEventPage auth={auth} />
     }
     const [selectedPage, setSelectedPage] = useState(Object.keys(pages)[0])
     const elements = {
         'Dashboard': ['active', 'home'],
         'Eventos': ['has-subnav', 'list'],
         'Asistentes': ['has-subnav', 'users'],
-        'Documentacion': ['', 'info']
+        'crear evento': ['', 'list']
     }
     const logout = () => {
         setAuth(undefined)

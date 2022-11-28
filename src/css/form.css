@@ -28,12 +28,20 @@ textarea {
     padding: 5px;
 }
 
-.testbox {
+.testbox, .testboxEvent {
     display: flex;
     justify-content: center;
     align-items: center;
     height: inherit;
     padding: 20px;
+}
+
+.testboxEvent {
+    margin-left: 70px;
+}
+
+.testbox::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none;
 }
 
 form {
