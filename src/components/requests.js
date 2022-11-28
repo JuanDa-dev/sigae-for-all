@@ -2,9 +2,10 @@ import axios from 'axios'
 
 const url = `${process.env.REACT_APP_URL}/api/`;
 const getConfig = (token) => {
+    const value = token ? process.env.REACT_APP_SPACE === null : process.env.REACT_APP_SPACE + token
     return {
         headers: {
-            Authorization: process.env.REACT_APP_SPACE + token,
+            Authorization: value,
         },
         withCredentials: true
     }
