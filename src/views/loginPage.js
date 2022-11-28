@@ -49,7 +49,7 @@ export default function LoginPage() {
                 </button>
                 <div className='Sign_Up'>
                     <div>
-                        No tienes un Usuario?
+                        ¿No tienes un usuario?
                         <a href='www.cursos.uninorte.edu.co'>Registrate aqui</a>
                     </div>
                 </div>

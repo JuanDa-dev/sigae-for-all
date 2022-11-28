@@ -11,6 +11,7 @@ import { useContext } from 'react'
 export default function App() {
     const { auth } = useContext(AuthContext)
     
+    
     return (
         <BrowserRouter>
             <Routes>
