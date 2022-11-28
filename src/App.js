@@ -8,7 +8,13 @@ import AuthContext from './components/authProvider';
 import { useContext } from 'react'
 
 export default function App() {
-    const auth = "user"
+    const auth = {
+        id: "0",
+        name: "root",
+        password: "123456",
+        key: "123456",
+        token: "edwldmkl"
+    }
     //const { auth } = useContext(AuthContext)
     
     return (
@@ -17,7 +23,7 @@ export default function App() {
                 <Route path="/login" element={auth ? <Navigate replace to="/login" /> : <LoginPage />} />
                 <Route path="/Register" element={auth ? <Navigate replace to="/login" /> : <RegisterPage />} />
                 <Route path="/" element={auth ? <GestionPage /> : <Navigate replace to="/login" />} />
-                <Route path="/form" element={auth ? <FormPage /> : <Navigate replace to="/login" />} />
+                <Route path="/form/:form_id" element={<FormPage />} />
                 <Route path="*" exact element={<PageNotFound />} />
             </Routes>
         </BrowserRouter>

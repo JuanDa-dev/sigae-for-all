@@ -19,7 +19,6 @@ export default function LoginPage() {
                 password: password
             }
         })
-        console.log(response)
         if (typeof response === 'string') {
             console.log(response)
         } else {
