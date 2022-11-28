@@ -1,14 +1,9 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-    const user = localStorage.getItem('user')
-    const [auth, setAuth] = useState(typeof user === 'string' ? null : user);
-    
-    useEffect(() => {
-        setAuth(auth)
-    }, [auth])
+    const [auth, setAuth] = useState(null);
 
     return (
         <AuthContext.Provider value={{ auth, setAuth }}>

@@ -1,52 +1,32 @@
-
-// import AuthContext  from '../components/authProvider'
 import '../css/style_columns_rows.css'
+import { useEffect, useState } from 'react'
 
-export default function ColumnsRows() {
+export default function ColumnsRows({ title, dataPage }) {
+    const [data, setData] = useState(dataPage)
+    const [header, setHeader] = useState(data.length > 0 ? Object.keys(data[0]) : [])
 
-    document.getElementById('btn').click()
+    useEffect(() => {
+        setData(dataPage)
+        setHeader(dataPage.length > 0 ? Object.keys(dataPage[0]) : [])
+    }, [dataPage])
 
-    document.getElementById("btn").addEventListener('click', function() {
-        //Solo hay que modificar el numero 3, para cambiar el numero de columnas
-        var tb = createTable(3);
-
-        document.getElementById('Row-Columns').appendChild(tb);
-
-    });
-
-
-
-    function createTable(c) {
-
-        var row = document.createElement('tr');
-
-        for (var j = 0; j < c; j++) {
-            var column = document.createElement('td');
-            column.appendChild(document.createTextNode( " column:" + j));
-            row.appendChild(column);
-        }
-            
-        
-        
-        return row;
-    }
-    
     return (
         <div>
-            <h2> rows and colomns </h2>
-            <button type="submit" id="btn">make table</button>
+            <h2>{title}</h2>
             <div id="table-div"> 
                 <table className="content-table">
                     <thead>
-                        <tr>
-                        <th>Some Stuff</th>
-                        <th>Some Stuff</th>
-                        <th>Some Stuff</th>
-                
-                        </tr>
+                        <tr>{header.slice(1, header.length).map((key, index) => <th key={index}>{key}</th>)}</tr>
                     </thead>
                     <tbody id="Row-Columns">
-
+                        {data.map((dato, index1) => {
+                            const columns = Object.keys(dato)
+                            return <tr key={index1}>
+                                {columns.slice(1, columns.length).map((key, index2) => {
+                                    return <td key={index2}>{dato[key]}</td>
+                                })}
+                            </tr>
+                        })}
                     </tbody>
                 </table>
             </div>

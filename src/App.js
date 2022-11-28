@@ -2,20 +2,14 @@ import LoginPage from "./views/loginPage";
 import RegisterPage from "./views/RegisterPage"
 import GestionPage from "./views/gestionPage";
 import FormPage from "./views/formPage";
+import CreateEventPage from './views/createEventPage.js';
 import PageNotFound from "./views/pageNotFound";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import AuthContext from './components/authProvider';
 import { useContext } from 'react'
 
 export default function App() {
-    const auth = {
-        id: "0",
-        name: "root",
-        password: "123456",
-        key: "123456",
-        token: "edwldmkl"
-    }
-    //const { auth } = useContext(AuthContext)
+    const { auth } = useContext(AuthContext)
     
     return (
         <BrowserRouter>
