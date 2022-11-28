@@ -4,10 +4,12 @@ import { v4 as uuidV4 } from 'uuid';
 import { useState } from 'react';
 import '../css/form.css'
 import { QRCode } from 'react-qrcode'
+import { useQRCode } from 'react-qrcode'
 
 export default function FormPage() {
     const { form_id } = useParams();
     const [QRCodeValue, setQRCodeValue] = useState("")
+    const dataUrl = useQRCode(value)
     const [attendee, setAttendee] = useState({
         name: "",
         lastName: "",
@@ -65,7 +67,7 @@ export default function FormPage() {
     return(
         <div className="testbox">
             <form hidden onSubmit={downloadQRCode}>
-                <QRCode id="codigo" value={QRCodeValue} />
+                <img id="codigo" src={dataUrl} />
                 <a id="qrcode_a"></a>
                 <button id="qrcode_button" type="submit"></button>
             </form>
