@@ -4,43 +4,52 @@ import '../css/style_columns_rows.css'
 
 export default function ColumnsRows() {
 
-    var r =0 ;
-    
     document.getElementById('btn').click()
 
     document.getElementById("btn").addEventListener('click', function() {
-        r = 1;
-        var tb = createTable(r, 3);
+        //Solo hay que modificar el numero 3, para cambiar el numero de columnas
+        var tb = createTable(3);
 
-        document.getElementById('table-div').appendChild(tb);
+        document.getElementById('Row-Columns').appendChild(tb);
 
     });
 
 
 
-    function createTable(r) {
+    function createTable(c) {
 
-        var tb = document.createElement('table');
+        var row = document.createElement('tr');
 
-        for (var i = 0; i < r; i++) {
-            var row = document.createElement('tr');
-            // cambiar j para varias las filas
-            for (var j = 0; j < 3; j++) {
-                var column = document.createElement('td');
-                column.appendChild(document.createTextNode(" row:" + i + " column:" + j));
-                row.appendChild(column);
-            }
-            tb.appendChild(row);
+        for (var j = 0; j < c; j++) {
+            var column = document.createElement('td');
+            column.appendChild(document.createTextNode( " column:" + j));
+            row.appendChild(column);
         }
-
-        return tb;
+            
+        
+        
+        return row;
     }
     
     return (
         <div>
             <h2> rows and colomns </h2>
             <button type="submit" id="btn">make table</button>
-            <div id="table-div"> </div>
+            <div id="table-div"> 
+                <table className="content-table">
+                    <thead>
+                        <tr>
+                        <th>Some Stuff</th>
+                        <th>Some Stuff</th>
+                        <th>Some Stuff</th>
+                
+                        </tr>
+                    </thead>
+                    <tbody id="Row-Columns">
+
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     )
