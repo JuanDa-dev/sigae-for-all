@@ -3,8 +3,7 @@ import { useParams } from 'react-router-dom'
 import { v4 as uuidV4 } from 'uuid';
 import { useState } from 'react';
 import '../css/form.css'
-import { QRious } from 'react-qrious'
-import Swal from 'sweetalert2'
+import { QRCode } from 'react-qrcode'
 
 export default function FormPage() {
     const { form_id } = useParams();
@@ -60,12 +59,13 @@ export default function FormPage() {
         enlace.href = srcImage
         enlace.download = 'entrada a evento.png'
         enlace.click()
+        console.log(srcImage)
     }
   
     return(
         <div className="testbox">
             <form hidden onSubmit={downloadQRCode}>
-                <QRious id="codigo" value={QRCodeValue} />
+                <QRCode id="codigo" value={QRCodeValue} />
                 <a id="qrcode_a"></a>
                 <button id="qrcode_button" type="submit"></button>
             </form>

@@ -5,7 +5,7 @@ import ColumnsRows from "./ColumnsRows"
 export default function EventsPage({ auth }) {
     const [events, setEvents] = useState([])
     const [eventSelected, setEventSelected] = useState(null)
-
+    
     const getData = async () => {
         const response = await getRequest({ 
             name: `events/get_all/${auth.id}`,
